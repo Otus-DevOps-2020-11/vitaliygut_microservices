@@ -1,0 +1,64 @@
+---
+- name: Install Docker
+  hosts: all
+  become: true
+  tasks:
+    - name: Ensure old versions of Docker are not installed.
+      package:
+        name:
+          - docker
+          - docker-engine
+        state: absent
+
+    - name: Ensure dependencies are installed.
+      package:
+        name:
+          - apt-transport-https
+          - ca-certificates
+          - gnupg2
+          - python-pip
+        state: present
+
+    - name: PIP install docker-py
+      pip:
+        name: docker-py
+        executable: pip
+        state: present
+
+    - name: Add Docker apt key.
+      apt_key:
+        url: "https://download.docker.com/linux/{{ ansible_distribution | lower }}/gpg"
+        id: 9DC858229FC7DD38854AE2D88D81803C0EBFCD88
+        state: present
+      register: add_repository_key
+      ignore_errors: true
+
+    - name: Ensure curl is present (on older systems without SNI).
+      package: 
+        name: curl
+        state: present
+      when: add_repository_key is failed
+
+    - name: Add Docker apt key (alternative for older systems without SNI).
+      shell: >
+        curl -sSL https://download.docker.com/linux/{{ ansible_distribution | lower }}/gpg | sudo apt-key add -
+      args:
+        warn: false
+      when: add_repository_key is failed
+
+    - name: Add Docker repository.
+      apt_repository:
+        repo: "deb [arch=amd64] https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable"
+        state: present
+        update_cache: true
+
+    - name: Install Docker.
+      package:
+        name: "docker-ce"
+        state: present
+
+    - name: Ensure Docker is started and enabled at boot.
+      service:
+        name: docker
+        state: started
+        enabled: true

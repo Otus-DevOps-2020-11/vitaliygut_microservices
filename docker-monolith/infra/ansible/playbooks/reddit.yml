@@ -1,0 +1,14 @@
+---
+- name: Install Reddit
+  hosts: docker
+  become: true
+  gather_facts: no
+  tasks:
+    - name: container
+      docker_container:
+        name: reddit
+        image: vitaliygut/otus-reddit:1.0
+        ports:
+          - "9292:9292"
+        state: started
+        restart: yes

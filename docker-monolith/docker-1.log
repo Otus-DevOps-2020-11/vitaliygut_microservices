@@ -1,0 +1,8 @@
+REPOSITORY               TAG       IMAGE ID       CREATED         SIZE
+ubuntu/ubuntu-tmp-file   latest    2ef3646211e8   4 minutes ago   63.3MB
+ubuntu                   18.04     c090eaba6b94   2 weeks ago     63.3MB
+nginx                    latest    f6d0b4767a6c   3 weeks ago     133MB
+hello-world              latest    bf756fb1ae65   13 months ago   13.3kB
+
+docker inspect <u_image_id> В образе содержится статическая информация о слоях и описание
+docker inspect <u_container_id> В контенере еще описываются инфраструктурные элементы сеть, volume, запущенные процесы.
