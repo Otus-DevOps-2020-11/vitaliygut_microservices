@@ -1,5 +1,14 @@
 # vitaliygut_microservices
 vitaliygut microservices repository
+
+HW15
+=========================================
+gitlab-ci-1
+
+1. Развернут gitlab из контейнера
+2. Создан тестовый pipeline
+3. Добавлен docker-compouse для запуска gitlab-ci и gitlab-runner.
+
 HW14
 =========================================
 Docker-4
