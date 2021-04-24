@@ -1,6 +1,17 @@
 # vitaliygut_microservices
 vitaliygut microservices repository
 
+HW17
+=========================================
+monitoring-2
+
+Основное задание
+1. Добавил cAdvisor для мониторинга docker
+2. Добавил Grafana для визуалного отображения собраных метрик из prometheus
+3. Добавил Alertmanager для оправки нотификаций
+4. Обновил Makefile 
+5. Обновил собраные образы DockerHub
+
 HW16
 =========================================
 monitoring-1
