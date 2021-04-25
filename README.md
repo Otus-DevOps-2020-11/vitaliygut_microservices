@@ -1,6 +1,31 @@
 # vitaliygut_microservices
 vitaliygut microservices repository
 
+HW19
+=========================================
+kubernetes-1
+
+1. Развернуты виртуалки
+2. Создан кластер 
+```
+kubectl get nodes -o wide
+NAME         STATUS   ROLES                  AGE   VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME
+kubemaster   Ready    control-plane,master   42m   v1.21.0   10.130.0.32   <none>        Ubuntu 18.04.5 LTS   4.15.0-55-generic   docker://20.10.6
+kubernode1   Ready    <none>                 31m   v1.21.0   10.130.0.28   <none>        Ubuntu 18.04.5 LTS   4.15.0-55-generic   docker://20.10.6
+kubernode2   Ready    <none>                 31m   v1.21.0   10.130.0.8    <none>        Ubuntu 18.04.5 LTS   4.15.0-55-generic   docker://20.10.6
+```
+3. Созданы тестовые манифесты post,ui,comment,mongo-deployment.yml
+5. Запущены поды 
+```
+kubectl get pods
+NAME                                 READY   STATUS      RESTARTS   AGE
+command-demo                         0/1     Completed   0          21m
+comment-deployment-7bdd8d59f-lsm6r   1/1     Running     0          46s
+mongo-deployment-545fd54f7c-2svm5    1/1     Running     0          34s
+post-deployment-678767745-x87fl      1/1     Running     0          25s
+ui-deployment-7b597bbd6f-c8l45       1/1     Running     0          3m50s
+```
+
 HW18
 =========================================
 logging-1
