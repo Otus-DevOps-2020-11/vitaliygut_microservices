@@ -29,7 +29,7 @@ ui-7f966cccd8-dzx52        1/1     Running   0          14m
 ui-7f966cccd8-fvg9l        1/1     Running   0          14m
 ui-7f966cccd8-g5hrd        1/1     Running   0          14m
 ```
-![yandex cloud](https://prnt.sc/12239jw)
+![yandex cloud](https://user-images.githubusercontent.com/27003519/116011348-32be3f00-a62d-11eb-99df-9ea8fd8b7503.png)
 http://84.201.130.109:30482/
 
 
