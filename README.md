@@ -1,6 +1,16 @@
 # vitaliygut_microservices
 vitaliygut microservices repository
 
+HW21
+=========================================
+kubernetes-3
+
+1. Установлен Ingress Controller
+2. Перенастроил Ingress на прием только HTTPS трафика
+3. Настроил Network Policy
+4. Создал ресурс дискового хранилища в YC, добавили подключил к кластеру в виде PersistentVolume и подключили к деплою mongo
+
+
 HW20
 =========================================
 kubernetes-2

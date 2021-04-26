@@ -6,8 +6,8 @@
     labels:
       app: reddit
       component: mongo
-      comment-db: "true"
       post-db: "true"
+      comment-db: "true"
   spec:
     replicas: 1
     selector:
@@ -20,8 +20,8 @@
         labels:
           app: reddit
           component: mongo
-          comment-db: "true"
           post-db: "true"
+          comment-db: "true"
       spec:
         containers:
         - image: mongo:3.2
@@ -31,4 +31,5 @@
             mountPath: /data/db
         volumes:
         - name: mongo-persistent-storage
-          emptyDir: {}
+          persistentVolumeClaim:
+            claimName:  mongo-pvc
