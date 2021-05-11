@@ -1,5 +1,39 @@
 # vitaliygut_microservices
 vitaliygut microservices repository
+HW14
+=========================================
+Docker-4
+
+Параметризуем переменные окружения с помощью файла .env
+USERNAME=user
+PORT=80
+VERS=1.0
+COMPOSE_PROJECT_NAME=reddit
+Базовое имя проекта можно задать двумя спосабами:
+  1.   -p, --project-name NAME     Specify an alternate project name
+                              (default: directory name)
+  2. добавить переменную в файл .env COMPOSE_PROJECT_NAME=reddit
+
+Задания со ⭐
+Создаем файл docker-compose.override.yml
+Для запуска puma с нужными параметрами используем изменение директивы CMD
+  ui:
+    command: puma --debug -w 2
+  comment:
+    command: puma --debug -w 2
+  post:
+    command: puma --debug -w 2
+
+Для запуска файла следующих команд: docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
+
+HW13
+=========================================
+
+Выполненные работы
+Разбиваем наше приложение на несколько компонентов
+Запускаем наше приложение
+Оптимизируем наше приложение
+Используем volume
 
 HW12
 =========================================
