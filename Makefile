@@ -1,7 +1,7 @@
 SHELL = /bin/sh
 include ./docker/.env
 export
-build_all: build_post build_comment build_ui build_prometheus build_alertmanager
+build_all: build_post build_comment build_ui build_prometheus build_alertmanager build_fluentd
 build_comment:
 	cd ./src/comment && bash ./docker_build.sh
 
@@ -17,31 +17,37 @@ build_prometheus:
 build_alertmanager:
 	cd ./monitoring/alertmanager && docker build -f Dockerfile -t $(USER_NAME)/alertmanager .
 
-push_all: push_comment push_post push_ui push_prometheus push_alertmanager
+build_fluentd:
+	cd ./logging/fluentd && docker build -f Dockerfile -t $(USER_NAME)/fluentd .
+
+push_all: push_comment push_post push_ui push_prometheus push_alertmanager push_fluentd
 
 push_comment:
-	docker push $(USER_NAME)/comment:latest
+	docker push $(USER_NAME)/comment:$(VERS)
 
 push_post:
-	docker push ${USER_NAME}/post:latest
+	docker push ${USER_NAME}/post:$(VERS)
 
 push_ui:
-	docker push ${USER_NAME}/ui:latest
+	docker push ${USER_NAME}/ui:$(VERS)
 
 push_prometheus:
-	docker push ${USER_NAME}/prometheus:latest
+	docker push ${USER_NAME}/prometheus:$(VERS)
 
 push_alertmanager:
-	docker push ${USER_NAME}/alertmanager:latest
+	docker push ${USER_NAME}/alertmanager:$(VERS)
+
+push_fluentd:
+	docker push ${USER_NAME}/fluentd:$(VERS)
 
 up:
-	cd ./docker && docker-compose -f docker-compose.yml -f docker-compose-monitoring.yml up -d
+	cd ./docker && docker-compose -f docker-compose.yml -f docker-compose-monitoring.yml -f docker-compose-logging.yml up -d
 
 down:
-	cd ./docker && docker-compose down
+	cd ./docker && docker-compose -f docker-compose.yml -f docker-compose-monitoring.yml -f docker-compose-logging.yml down
 
 stop:
-	cd ./docker && docker-compose  -f docker-compose.yml  stop
+	cd ./docker && docker-compose  -f docker-compose.yml -f docker-compose-monitoring.yml  -f docker-compose-logging.yml stop
 
 purge:
 	docker kill $(shell docker ps -q); true
