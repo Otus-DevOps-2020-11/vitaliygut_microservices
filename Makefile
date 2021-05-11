@@ -1,7 +1,7 @@
 SHELL = /bin/sh
 include ./docker/.env
 export
-build_all: build_post build_comment build_ui build_prometheus
+build_all: build_post build_comment build_ui build_prometheus build_alertmanager
 build_comment:
 	cd ./src/comment && bash ./docker_build.sh
 
@@ -14,7 +14,10 @@ build_ui:
 build_prometheus:
 	cd ./monitoring/prometheus && docker build -f Dockerfile -t $(USER_NAME)/prometheus .
 
-push_all: push_comment push_post push_ui push_prometheus
+build_alertmanager:
+	cd ./monitoring/alertmanager && docker build -f Dockerfile -t $(USER_NAME)/alertmanager .
+
+push_all: push_comment push_post push_ui push_prometheus push_alertmanager
 
 push_comment:
 	docker push $(USER_NAME)/comment:latest
@@ -28,8 +31,11 @@ push_ui:
 push_prometheus:
 	docker push ${USER_NAME}/prometheus:latest
 
+push_alertmanager:
+	docker push ${USER_NAME}/alertmanager:latest
+
 up:
-	cd ./docker && docker-compose -f docker-compose.yml up -d
+	cd ./docker && docker-compose -f docker-compose.yml -f docker-compose-monitoring.yml up -d
 
 down:
 	cd ./docker && docker-compose down
