@@ -5,4 +5,4 @@
 .terraform/
 variables.json
 backend.tf
-.env
+*.env

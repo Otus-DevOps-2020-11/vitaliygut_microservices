@@ -1,5 +1,33 @@
 # vitaliygut_microservices
 vitaliygut microservices repository
+
+HW16
+=========================================
+monitoring-1
+
+1. Запущен docker  с prometheus;
+
+2. Собран образ prometheus с необходимыми конфигом;
+
+3. docker-compose.yml добавлен сервис prometheus;
+
+Задания со ⭐
+1. docker-compose.yml добавленnode_exporter для сбора метрик;
+
+2. docker-compose.yml  добавлен mongodb_exporter для сбора метрик с MongoDB; 
+
+3. docker-compose.yml blackbox_exporter для проверки работы сервисов ui, post и comment;
+
+4. Создан Makefile - билд образа по отдельносьти и все разом , пуш подготовленных имаджей на docker hub, запускает docker-compose.yml, очистка docker-machine
+
+HW15
+=========================================
+gitlab-ci-1
+
+1. Развернут gitlab из контейнера
+2. Создан тестовый pipeline
+3. Добавлен docker-compouse для запуска gitlab-ci и gitlab-runner.
+
 HW14
 =========================================
 Docker-4
