@@ -1,6 +1,39 @@
 # vitaliygut_microservices
 vitaliygut microservices repository
 
+HW20
+=========================================
+kubernetes-2
+
+1. Установил локально minikube
+2. Обновлены манифесты для Reddit, приложение запущено в локальном minikube
+3. Создал новый кластер настройка в yandex cloud
+```
+kubectl get nodes                                 
+NAME                        STATUS   ROLES    AGE   VERSION
+cl1vc8veqll1tum7dhs8-ovoj   Ready    <none>   15m   v1.19.7
+cl1vc8veqll1tum7dhs8-ylen   Ready    <none>   15m   v1.19.7
+```
+4. Приложение запущено в кластере yandex cloud
+```
+kubectl get pods -n dev       
+NAME                       READY   STATUS    RESTARTS   AGE
+comment-85c44d9b6b-gfdrm   1/1     Running   0          14m
+comment-85c44d9b6b-mpgnt   1/1     Running   0          14m
+comment-85c44d9b6b-w8nlr   1/1     Running   0          14m
+mongo-6b9fcfd49f-pqt62     1/1     Running   0          14m
+post-65984c87c6-7fpc5      1/1     Running   0          14m
+post-65984c87c6-q85ph      1/1     Running   0          14m
+post-65984c87c6-z27nf      1/1     Running   0          14m
+ui-7f966cccd8-dzx52        1/1     Running   0          14m
+ui-7f966cccd8-fvg9l        1/1     Running   0          14m
+ui-7f966cccd8-g5hrd        1/1     Running   0          14m
+```
+![yandex cloud](https://user-images.githubusercontent.com/27003519/116011348-32be3f00-a62d-11eb-99df-9ea8fd8b7503.png)
+http://84.201.130.109:30482/
+
+
+
 HW19
 =========================================
 kubernetes-1
