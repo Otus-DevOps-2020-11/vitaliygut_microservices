@@ -1,6 +1,14 @@
 # vitaliygut_microservices
 vitaliygut microservices repository
 
+HW22
+=========================================
+kubernetes-4
+
+1. Установили Helm
+2. Установил Gitlab
+3. Настроили CI для микросервисов
+
 HW21
 =========================================
 kubernetes-3
