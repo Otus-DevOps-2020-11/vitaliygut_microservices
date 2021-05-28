@@ -1,6 +1,14 @@
 # vitaliygut_microservices
 vitaliygut microservices repository
 
+HW23
+=========================================
+kubernetes-5
+
+1. Развернут Prometheus в Kubernetes 
+2. Настройка Prometheus
+3. Настройка Grafana
+
 HW22
 =========================================
 kubernetes-4
